@@ -14,7 +14,7 @@ tags:
 
 
 一、环境
-1. CentOS 7  (gitlab-runner的服务器上事先安装maven,sshpass)
+CentOS 7  (gitlab-runner的服务器上事先安装maven,sshpass)
 
 二、gitlab-runner
 官方安装文档:https://docs.gitlab.com/runner/install/linux-manually.html
