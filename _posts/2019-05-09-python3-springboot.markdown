@@ -14,15 +14,15 @@ tags:
 
 
 > Program: springboot项目部署
-
+>
 > By: liumeijian.github.io
-
+>
 > 必须在用户目录下新建Releases目录，把此脚本放到下面
-
+>
 > 项目目录 ~/app/application/ 其中app要先自己手动创建
-
+>
 > 使用python3.7环境运行
-
+>
 > 自用 仅做参考
 
 ```python
