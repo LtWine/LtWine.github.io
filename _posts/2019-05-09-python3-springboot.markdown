@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Deploy Springboot With Python3"
-subtitle:   "As a reference for the springboot project"
+subtitle:   " \"As a reference for the springboot project\""
 date:       2019-05-09 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-android.jpg"
@@ -10,13 +10,21 @@ tags:
     - tech
     - springboot
 	- python
-    - Meta
 ---
 
+Program: springboot项目部署
+
+By: liumeijian.github.io
+
+必须在用户目录下新建Releases目录，把此脚本放到下面
+
+项目目录 ~/app/application/ 其中app要先自己手动创建
+
+使用python3.7环境运行
+
+自用 仅做参考
+
 ```python
-# Program: springboot项目部署
-# Data: 2019-05-09
-# By: liumeijian.github.io
 import datetime
 import os
 import stat
@@ -25,11 +33,6 @@ import shutil
 import sys
 import tarfile
 import zipfile
-
-# 必须在用户目录下新建Releases目录，把此脚本放到下面
-# 项目目录 ~/app/application/ 其中app要先自己手动创建
-# 使用python3.7环境运行
-# 自用 仅做参考
 
 # Home目录
 HomePath = os.path.expanduser('~')

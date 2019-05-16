@@ -11,8 +11,8 @@ tags:
 	- mybatis
 ---
 
-
 一、pom.xml插件配置
+
 ```xml
 <plugin>
     <groupId>org.mybatis.generator</groupId>
