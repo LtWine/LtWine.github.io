@@ -4,7 +4,7 @@ title:      "Deploy Springboot With Python3"
 subtitle:   " \"As a reference for the springboot project\""
 date:       2019-05-09 00:00:00
 author:     "Wine"
-header-img: "img/post-bg-android.jpg"
+header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
     - tech
@@ -13,7 +13,7 @@ tags:
 ---
 
 
-> Program: springboot项目部署
+Program: springboot项目部署
 
 By: liumeijian.github.io
 
