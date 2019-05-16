@@ -1,14 +1,16 @@
 ---
 layout:     post
-title:      "Hello 2019"
-subtitle:   " \"Hello World, Hello Blog\""
-date:       2019-04-30 00:00:00
+title:      "Mybatis Auto Generate"
+subtitle:   " \"Good Practice to Auto Generate sql And Model\""
+date:       2019-04-20 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
     - Meta
 ---
+
+> mybatis自动生成model，dao，xml文件
 
 一、pom.xml插件配置
 
