@@ -7,7 +7,8 @@ author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
-    - Meta
+    - mybatis
+    - tech
 ---
 
 > mybatis自动生成model，dao，xml文件
