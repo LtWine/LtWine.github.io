@@ -102,10 +102,11 @@ page-mathjax: false
 
 # Friends
 friends: [
-#    {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
+    {
+         title: "Me",
+         href: "http://www.liumj.cn/"
+     }
+#  ,{
 #        title: "乱序",
 #        href: "http://mida.re/"
 #    },{
