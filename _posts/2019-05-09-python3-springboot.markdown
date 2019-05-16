@@ -7,7 +7,9 @@ author:     "Wine"
 header-img: "img/post-bg-infinity.jpg"
 catalog: true
 tags:
-    - Meta
+    - springboot
+    - python
+    - tech
 ---
 
 

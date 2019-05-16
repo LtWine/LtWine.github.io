@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Springboot package(assembly)"
-subtitle:   "maven-assembly-plugin for java project"
+subtitle:   " \"maven-assembly-plugin for java project\""
 date:       2019-05-14 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
@@ -9,7 +9,7 @@ catalog: true
 tags:
     - tech
     - springboot
-	- maven
+    - maven
 ---
 
 assembly maven插件
