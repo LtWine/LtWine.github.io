@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Deploy Springboot With Python3"
-subtitle:   " \"As a reference for the springboot project\""
+subtitle:   " \"As a reference for springboot project\""
 date:       2019-05-09 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
