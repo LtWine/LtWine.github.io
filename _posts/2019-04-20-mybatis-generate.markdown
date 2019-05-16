@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Mybatis Auto Generate"
-subtitle:   "config for mybatis auto generate"
+subtitle:   " \"config for mybatis auto generate\""
 date:       2019-04-20 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-js-module.jpg"
@@ -9,45 +9,42 @@ catalog: true
 tags:
     - tech
 	- mybatis
-    - Meta
 ---
+
 
 一、pom.xml插件配置
 ```xml
-<!--mybatis代码自动生成插件-->
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.7</version>
-				<dependencies>
-					<dependency>
-						<groupId> mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.27</version>
-					</dependency>
-					<dependency>
-						<groupId>org.mybatis.generator</groupId>
-						<artifactId>mybatis-generator-core</artifactId>
-						<version>1.3.7</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<!--允许移动生成的文件 -->
-					<verbose>true</verbose>
-					<!-- 是否覆盖 -->
-					<overwrite>false</overwrite>
-					<!-- 自动生成的配置 -->
-					<configurationFile>
-						src/main/resources/mybatis-generator-mysql.xml</configurationFile>
-				</configuration>
-			</plugin>
+<plugin>
+    <groupId>org.mybatis.generator</groupId>
+    <artifactId>mybatis-generator-maven-plugin</artifactId>
+    <version>1.3.7</version>
+    <dependencies>
+        <dependency>
+            <groupId> mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.27</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+    </dependencies>
+    <configuration>
+        <!--允许移动生成的文件 -->
+        <verbose>true</verbose>
+        <!-- 是否覆盖 -->
+        <overwrite>false</overwrite>
+        <!-- 自动生成的配置 -->
+        <configurationFile>
+            src/main/resources/mybatis-generator-mysql.xml</configurationFile>
+    </configuration>
+</plugin>
 ```
 二、mybatis-generator-mysql.xml文件配置
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <commentGenerator>
