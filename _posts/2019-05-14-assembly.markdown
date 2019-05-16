@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Springboot package(assembly)"
+title:      "Springboot package"
 subtitle:   "maven-assembly-plugin for java project"
 date:       2019-05-14 00:00:00
 author:     "Wine"
@@ -12,7 +12,7 @@ tags:
 	- maven
 ---
 
-> assembly maven插件
+assembly maven插件
 ```
 <plugin>
     <artifactId>maven-assembly-plugin</artifactId>
