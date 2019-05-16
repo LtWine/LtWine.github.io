@@ -12,7 +12,8 @@ tags:
     - cicd
 ---
 
-一、环境
+
+> 一、环境
 1. CentOS 7  (gitlab-runner的服务器上事先安装maven,sshpass)
 
 二、gitlab-runner

@@ -12,7 +12,7 @@ tags:
 	- maven
 ---
 
-assembly maven插件
+> assembly maven插件
 ```
 <plugin>
     <artifactId>maven-assembly-plugin</artifactId>
