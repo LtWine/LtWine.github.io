@@ -18,7 +18,6 @@ tags:
 CentOS 7  (gitlab-runner的服务器上事先安装maven,sshpass)
 
 ### gitlab-runner
-
 官方安装文档:https://docs.gitlab.com/runner/install/linux-manually.html
 官方注册文档:https://docs.gitlab.com/runner/register/index.html
 
