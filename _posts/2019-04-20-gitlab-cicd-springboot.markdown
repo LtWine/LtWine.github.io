@@ -19,6 +19,7 @@ CentOS 7  (install maven、sshpass in advance)
 
 ### gitlab-runner
 Install Document:https://docs.gitlab.com/runner/install/linux-manually.html
+
 Register Document:https://docs.gitlab.com/runner/register/index.html
 
 ### .gitlab-ci.yml
