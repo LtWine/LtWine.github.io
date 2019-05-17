@@ -15,13 +15,13 @@ tags:
 
 ### 环境
 
-CentOS 7  (gitlab-runner的服务器上事先安装maven,sshpass)
+CentOS 7  (install maven、sshpass in advance)
 
 ### gitlab-runner
-官方安装文档:https://docs.gitlab.com/runner/install/linux-manually.html
-官方注册文档:https://docs.gitlab.com/runner/register/index.html
+Install Document:https://docs.gitlab.com/runner/install/linux-manually.html
+Register Document:https://docs.gitlab.com/runner/register/index.html
 
-### .gitlab-ci.yml内容 针对develop分支
+### .gitlab-ci.yml
 
 ```bash
 #全局变量定义

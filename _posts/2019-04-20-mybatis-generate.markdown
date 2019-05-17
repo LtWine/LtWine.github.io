@@ -11,9 +11,9 @@ tags:
     - tech
 ---
 
-> mybatis自动生成model，dao，xml文件
+> auto genereate model、dao、xml
 
-### pom.xml插件配置
+### pom.xml
 
 ```xml
 <plugin>
@@ -43,7 +43,7 @@ tags:
     </configuration>
 </plugin>
 ```
-### mybatis-generator-mysql.xml文件配置
+### mybatis-generator-mysql.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">

@@ -12,7 +12,7 @@ tags:
     - maven
 ---
 
-### assembly maven插件
+### assembly plugin
 ```xml
 <plugin>
     <artifactId>maven-assembly-plugin</artifactId>
@@ -34,7 +34,7 @@ tags:
     </executions>
 </plugin>
 ```
-### package.xml文件
+### package.xml
 
 项目路径src/main/build/package.xml
 ```xml
