@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      "Gitlab CI for Springboot"
-subtitle:   " \"Gitlab CICD Shell Scripts for Springboot\""
 date:       2019-04-20 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
