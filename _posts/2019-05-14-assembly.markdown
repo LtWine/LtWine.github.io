@@ -5,7 +5,7 @@ subtitle:   " \"maven-assembly-plugin for java project\""
 date:       2019-05-14 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-alitrip.jpg"
-catalog: false
+catalog: true
 tags:
     - tech
     - springboot

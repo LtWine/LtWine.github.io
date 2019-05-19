@@ -5,7 +5,7 @@ subtitle:   " \"Good Practice to Auto Generate sql And Model\""
 date:       2019-04-20 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
-catalog: false
+catalog: true
 tags:
     - mybatis
     - tech
