@@ -3,11 +3,12 @@ layout:     post
 title:      "Build Own MessageCenter"
 date:       2019-05-19 00:00:00
 author:     "Wine"
-header-img: "img/post-bg-digital-native.jpg"
+header-img: "img/post/reeder.png"
 catalog: true
 tags:
     - tech
     - feed
+    - reeder
     - message
 ---
 
@@ -28,10 +29,10 @@ And i think you can finish it by yourself.I don't want to talk about it
 3.Click the "+ ADD CONTENT" at bottom left.You can discover everything you are interested in and "FOLLOW" it.
 
 ### Reeder
-1.Install \<Reeder\> application on your phone or your pc. It's a good application in my opinon.Tell me in the comment if you hava better practices.
+1.Install \<Reeder\> application on your phone or your pc. It's a good application in my opinon.
 
 2.Account Settings. On my computer: Preference -> Accounts -> Add Account -> Feedly -> Continue with Feedly
 
 
 
-![](./img/post/reeder.png)
+Tell me in the comment if you hava better practices.
