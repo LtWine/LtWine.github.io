@@ -24,25 +24,38 @@ tags:
 > 自用 仅做参考
 
 ```python
+# Program: springboot项目部署
 import datetime
 import os
-import stat
 import re
 import shutil
+import stat
 import sys
 import tarfile
 import zipfile
 
 # Home目录
 HomePath = os.path.expanduser('~')
-HomePath = HomePath + "/"
-# Realease目录
-ReleasePath = os.path.expanduser(HomePath + 'Releases/')
+
+#config 可配置项
+# 我自己的环境  其他环境去掉下面这句
+# HomePath = HomePath + "/PycharmProjects/insteadShell"
+# 是否备份
+isbackUp = False
+# 强制需要覆盖的文件 例子:force_instead_file= ["data"]
+force_instead_file= []
+
+
+
+
+
+backUpDirName = '/backup'
 allFileToDeploy = []
 dirName = ''
 dirPath = ''
-isbackUp = True
-backUpDirName = '/backup'
+HomePath = HomePath + "/"
+ReleasePath = os.path.expanduser(HomePath + 'Releases/')
+
 
 
 def movefile(srcfile, dstfile):
@@ -63,7 +76,7 @@ def tar(fname, fpath):
     for root, dir, files in os.walk(fpath):
         for file in files:
             fullpath = os.path.join(root, file)
-            if backUpDirName not in fullpath and "/log/" not in fullpath and "/logs/" not in fullpath:
+            if backUpDirName not in fullpath and "/log/" not in fullpath and "/logs/" not in fullpath and "/nohup.out" not in fullpath:
                 t.add(fullpath)
     t.close()
 
@@ -102,7 +115,7 @@ def allFileToDeployM():
         # if (asw != 'y'):
         #     exit("停止部署")
 
-    # 部署目录和项目 python deploy.py app hic-ump  || python deploy.py cloud eureka-config
+    # 部署目录和项目 python deploy.py app hic-ump id-center || python deploy.py cloud eureka-config eureka-service
     if len(sys.argv) >= 3:
         if not os.path.isdir(HomePath + sys.argv[1]):
             exit("请输入正确的应用部署目录")
@@ -136,12 +149,12 @@ def deployApplication():
         if not os.path.isdir(application_path):
             un_zip(application, dir_path)
             os.chdir(application_path)
-            os.chmod(application_path + "/start.sh",stat.S_IRWXU)
+            os.chmod(application_path + "/start.sh", stat.S_IRWXU)
             os.system(application_path + "/start.sh > nohup.out 2>&1 &")
         else:
             # 开始备份
             os.chdir(application_path)
-            os.chmod(application_path + "/stop.sh",stat.S_IRWXU)
+            os.chmod(application_path + "/stop.sh", stat.S_IRWXU)
             os.system(application_path + "/stop.sh")
             os.chdir(makeBakDir(application_path))
             if isbackUp:
@@ -163,11 +176,16 @@ def deployApplication():
                 if os.path.isdir(application_path + "/lib"):
                     shutil.rmtree(application_path + "/lib", True)
                 shutil.copytree(application_release_path + '/lib', application_path + "/lib")
-                listdir = os.listdir(application_path)
-                re_listdir = os.listdir(application_release_path)
                 # 补充剩余空缺文件
-                for x in re_listdir:
-                    if x not in listdir:
+            listdir = os.listdir(application_path)
+            re_listdir = os.listdir(application_release_path)
+            for x in re_listdir:
+                if x not in listdir or x in force_instead_file:
+                    if os.path.isdir(application_release_path + x):
+                        if os.path.isdir(application_path + "/" + x):
+                            shutil.rmtree(application_path + "/" + x)
+                        shutil.copytree(application_release_path + '/' + x, application_path + "/" + x)
+                    else:
                         shutil.copy(application_release_path + '/' + x, application_path + "/" + x)
             if os.path.isfile(application_path + "/start.sh"):
                 os.chdir(application_path)
@@ -183,5 +201,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 ```
