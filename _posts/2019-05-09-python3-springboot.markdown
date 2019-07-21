@@ -11,17 +11,12 @@ tags:
     - tech
 ---
 
-> Program: springboot项目部署
+> Program: springboot项目部署 base on python3.7
 >
-> By: liumeijian.github.io
+> 必须在～/ 目录下新建Releases目录
 >
-> 必须在用户目录下新建Releases目录，把此脚本放到下面
+> 项目目录 ~/app/application app要手动创建
 >
-> 项目目录 ~/app/application/ 其中app要先自己手动创建
->
-> 使用python3.7环境运行
->
-> 自用 仅做参考
 
 ```python
 # Program: springboot项目部署
@@ -37,17 +32,13 @@ import zipfile
 # Home目录
 HomePath = os.path.expanduser('~')
 
-#config 可配置项
+# config 可配置项
 # 我自己的环境  其他环境去掉下面这句
 # HomePath = HomePath + "/PycharmProjects/insteadShell"
 # 是否备份
 isbackUp = False
 # 强制需要覆盖的文件 例子:force_instead_file= ["data"]
-force_instead_file= []
-
-
-
-
+force_instead_file = []
 
 backUpDirName = '/backup'
 allFileToDeploy = []
@@ -55,7 +46,6 @@ dirName = ''
 dirPath = ''
 HomePath = HomePath + "/"
 ReleasePath = os.path.expanduser(HomePath + 'Releases/')
-
 
 
 def movefile(srcfile, dstfile):
@@ -91,6 +81,14 @@ def un_zip(zipFileName, target):
 def exit(errorMsg):
     print(errorMsg)
     sys.exit(1)
+
+
+def isPythonProject(path):
+    work_dir = path
+    for filename in os.listdir(work_dir):
+        if re.match('.+\.py', filename):
+            return True
+    return False
 
 
 #### 获取所有需要部署的项目到allFileToDeploy下
@@ -153,9 +151,10 @@ def deployApplication():
             os.system(application_path + "/start.sh > nohup.out 2>&1 &")
         else:
             # 开始备份
+            application_release_path = HomePath + 'Releases/' + application + '/'
+            if os.path.isdir(application_release_path):
+                shutil.rmtree(application_release_path)
             os.chdir(application_path)
-            os.chmod(application_path + "/stop.sh", stat.S_IRWXU)
-            os.system(application_path + "/stop.sh")
             os.chdir(makeBakDir(application_path))
             if isbackUp:
                 otherStyleTime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -168,7 +167,7 @@ def deployApplication():
                     os.remove(application_path + "/" + application + ".war")
                 shutil.copy(application_release_path + application + '.war',
                             application_path + "/" + application + ".war")
-            else:
+            elif os.path.isfile(application_release_path + application + '.jar'):
                 if os.path.isfile(application_path + application + '.jar'):
                     os.remove(application_path + "/" + application + ".jar")
                 shutil.copy(application_release_path + application + '.jar',
@@ -177,6 +176,18 @@ def deployApplication():
                     shutil.rmtree(application_path + "/lib", True)
                 shutil.copytree(application_release_path + '/lib', application_path + "/lib")
                 # 补充剩余空缺文件
+            elif isPythonProject(application_release_path):
+                for parent, dirnames, filenames in os.walk(application_release_path, followlinks=True):
+                    for filename in filenames:
+                        if re.match('.+\.(py|cfg)', filename):
+                            dirname = parent.replace(application_release_path, '', 1)
+                            file_path = os.path.join(dirname, filename)
+                            if os.path.isfile(application_path + file_path):
+                                os.remove(application_path + "/" + file_path)
+                            if not os.path.exists(application_path + "/" + dirname):
+                                os.makedirs(application_path + "/" + dirname)
+                            shutil.copy(application_release_path + "/" + file_path,
+                                        application_path + "/" + file_path)
             listdir = os.listdir(application_path)
             re_listdir = os.listdir(application_release_path)
             for x in re_listdir:
@@ -187,6 +198,11 @@ def deployApplication():
                         shutil.copytree(application_release_path + '/' + x, application_path + "/" + x)
                     else:
                         shutil.copy(application_release_path + '/' + x, application_path + "/" + x)
+            # 直接使用启动脚本 保证事务的一致性
+            # if os.path.isfile(application_path + "/stop.sh"):
+            #     os.chdir(application_path)
+            #     os.chmod(application_path + "/stop.sh", stat.S_IRWXU)
+            #     os.system(application_path + "/stop.sh > nohup.out 2>&1 &")
             if os.path.isfile(application_path + "/start.sh"):
                 os.chdir(application_path)
                 os.chmod(application_path + "/start.sh", stat.S_IRWXU)
@@ -201,6 +217,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 ```

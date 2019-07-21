@@ -16,7 +16,7 @@ tags:
 
 # project structure
 
-## structure of maven project (base on springboot)
+#### structure of maven project (base on springboot)
 ```bash
 .
 ├── config-server
@@ -32,7 +32,7 @@ tags:
 ├── pom.xml
 ```
 
-## structure of ci scripts
+#### structure of ci scripts
 ```bash
 ├── .gitlab-ci.yml
 ├── .gitlab
@@ -44,8 +44,8 @@ tags:
 
 # code detail
 
-## pom.xml
-### parent
+#### pom.xml
+###### parent
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -144,7 +144,6 @@ tags:
             </plugin>
         </plugins>
     </build>
-
     <repositories>
         <repository>
             <id>test.nexus</id>
@@ -171,8 +170,8 @@ tags:
     </distributionManagement>
 </project>
 ```
-### child
-#### config-server
+#### child
+###### config-server
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -282,7 +281,7 @@ tags:
     </repositories>
 </project>
 ```
-#### eureka-server
+###### eureka-server
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -392,8 +391,8 @@ tags:
 </project>
 ```
 
-## ci script
-### .gitlab-ci.yml
+#### ci script
+###### .gitlab-ci.yml
 ```yml
 # 全局变量定义
 variables:
@@ -410,7 +409,7 @@ include:
 - local: .gitlab/ci/global.gitlab-ci.yml
 ```
 
-### .gitlab/ci/global.gitlab-ci.yml
+###### .gitlab/ci/global.gitlab-ci.yml
 ```yml
 variables:
   DEV_NAME: test
@@ -482,11 +481,11 @@ deploy:
 
 # use guide
 
-### develop:
+#### develop:
 ```test
 develop branch and merge_requests will run you gitlab-runner to deploy the project
 ```
-### master:
+#### master:
 ```test
 1、copy code from #部署,运行 and change only refs to tags.
 2、use  `mvn release:command`  plugin of maven to deploy the release version.
