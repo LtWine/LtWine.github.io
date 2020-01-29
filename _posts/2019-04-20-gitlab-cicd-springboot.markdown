@@ -14,11 +14,11 @@ tags:
 
 ### 环境
 
-CentOS 7  (install maven、sshpass in advance)
+CentOS 7
 
 ### gitlab-runner
-Install Document:https://docs.gitlab.com/runner/install/linux-manually.html  
-Register Document:https://docs.gitlab.com/runner/register/index.html
+- 下载 : https://docs.gitlab.com/runner/install/linux-manually.html  
+- 注册仓库 : https://docs.gitlab.com/runner/register/index.html
 
 ### .gitlab-ci.yml
 

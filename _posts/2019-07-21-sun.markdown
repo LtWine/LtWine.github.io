@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "GITLAB CI + MAVEN"
+title:      "基于gitlab的maven项目自动发布"
 date:       2019-07-21 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-2015.jpg"
@@ -12,7 +12,7 @@ tags:
     - maven
 ---
 
-> how to build a good springboot projects with gitlab ci and maven version control
+> 如何使用 gitlab ci 和 maven 来构建一个自动发布的maven项目
 
 # project structure
 
@@ -66,10 +66,11 @@ tags:
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Finchley.SR1</version>
+        <version>Finchley.SR4</version>
         <relativePath />
     </parent>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -110,7 +111,7 @@ tags:
                 <version>2.5.3</version>
                 <configuration>
                     <arguments>-Dmaven.test.skip=true</arguments>
-                    <tagNameFormat>${project.artifactId}-${project.version}</tagNameFormat>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
                     <tagBase>http://ip:port/gitlab/test/test/tags</tagBase>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
@@ -156,18 +157,6 @@ tags:
             </releases>
         </repository>
     </repositories>
-    <distributionManagement>
-        <repository>
-            <id>nexus-deploy-release</id>
-            <name>Nexus Release Repositories</name>
-            <url>http://ip:port/nexus/repository/test_release/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-deploy-snapshot</id>
-            <name>Nexus Snapshots Repositories</name>
-            <url>http://ip:port/nexus/repository/test_snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
 ```
 #### child
@@ -183,14 +172,7 @@ tags:
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>config-server</artifactId>
-    <packaging>jar</packaging>
 	<name>config-server</name>
-	<description>config-server</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
     <dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -207,7 +189,6 @@ tags:
 		</dependency>
     </dependencies>
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -294,20 +275,12 @@ tags:
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>eureka-server</artifactId>
-    <packaging>jar</packaging>
     <name>eureka-server</name>
-    <description>eureka-server</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -315,15 +288,10 @@ tags:
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -478,21 +446,11 @@ deploy:
     - Develop/SourceCode/Code/**/*.{java,xml,properties,sh}
 ```
 
-
 # use guide
 
 #### develop:
-```test
-develop branch and merge_requests will run you gitlab-runner to deploy the project
+```text
+ 开发时候，develop 的提交或者合并操作会触发CI 
 ```
-#### master:
-```test
-1、copy code from #部署,运行 and change only refs to tags.
-2、use  `mvn release:command`  plugin of maven to deploy the release version.
-```
-
-
-
-ps: I will update and supplement it when i'am happy.
 
 

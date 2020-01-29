@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Mybatis Auto Generate"
+title:      "Mybatis 自动生成数据库model,dao,xml"
 subtitle:   " \"Good Practice to Auto Generate sql And Model\""
 date:       2019-04-20 00:00:00
 author:     "Wine"
@@ -10,8 +10,6 @@ tags:
     - mybatis
     - tech
 ---
-
-> auto genereate model、dao、xml
 
 ### pom.xml
 
@@ -53,7 +51,7 @@ tags:
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="fale"/>
             <property name="addRemarkComments" value="true"/>
-            <property name="author" value="zhaozb"/>
+            <property name="author" value=""/>
         </commentGenerator>
         <!--数据库链接地址账号密码,配置开发环境连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"

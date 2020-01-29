@@ -1,7 +1,6 @@
 ---
 layout:     post
-title:      "Springboot Package"
-subtitle:   " \"maven-assembly-plugin for java project\""
+title:      "使用assembly 为 maven项目打包"
 date:       2019-05-14 00:00:00
 author:     "Wine"
 header-img: "img/post-bg-alitrip.jpg"
@@ -50,18 +49,18 @@ tags:
     <fileSets>
         <fileSet>
             <directory>bin</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
         </fileSet>
         <fileSet>
             <directory>src/main/resources</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <excludes>
                 <exclude>*.properties</exclude>
             </excludes>
         </fileSet>
         <fileSet>
             <directory>${project.build.directory}</directory>
-            <outputDirectory></outputDirectory>
+            <outputDirectory/>
             <includes>
                 <include>${artifactId}.jar</include>
             </includes>
