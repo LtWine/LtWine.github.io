@@ -1,0 +1,11 @@
+{
+  "name": "Ltw Blog",
+  "short_name": "Ltw Blog",
+  "description": "About an engineer & designer who loves code.",
+  "icons": [],
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
